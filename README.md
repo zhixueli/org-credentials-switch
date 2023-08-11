@@ -81,6 +81,7 @@ duration_seconds = 900
     - region 填入使用子账号的默认 region；
     - duration_seconds 填入临时凭证有效时长，最短15分钟，最长为上述步骤中子账号中创建的管理角色的 Maximum session duration 属性中的时长。客户端在使用临时凭证时，首先会检查本地已有临时凭证是否过期，过期之后会自动调用 assume role 接口重新申请，未过期则继续使用本地已有临时凭证。
 * 为每一个需要管理的其他子账号仿照子账号1添加 profile。
+* Credentails文件中各个 profile 的名字可以按照习惯和需求自定义，但各个子账号的 source_profile 必须设置为主账号的 gateway 用户的 profile，这个 gateway 用户仅设置所需要的最小权限。
 2. AWS Cli 使用示例：
 ```
 aws s3 ls --profile [子账号1 Account ID]
